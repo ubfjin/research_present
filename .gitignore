@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.npm-cache/
+.vercel/
+.env
+.env.*
+!.env.example
+guidelines/
+ATTRIBUTIONS.md
+postcss.config.mjs
+src/app/Attributions.md
+src/app/components/
+src/assets/
+src/styles/default_theme.css
+src/styles/globals.css
