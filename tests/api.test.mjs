@@ -22,6 +22,8 @@ test('AI remains unavailable until both server secrets exist', async () => {
   const s = response();
   status({ method: 'GET' }, s);
   assert.equal(s.payload.configured, false);
+  assert.equal(s.payload.keyConfigured, false);
+  assert.equal(s.payload.codeConfigured, false);
   const r = response();
   await ai(request('question', {}), r);
   assert.equal(r.code, 503);

@@ -3,6 +3,8 @@ export default function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   return res.status(200).json({
     configured: Boolean(process.env.OPENAI_API_KEY && process.env.AI_ACCESS_CODE),
+    keyConfigured: Boolean(process.env.OPENAI_API_KEY),
+    codeConfigured: Boolean(process.env.AI_ACCESS_CODE),
     accessRequired: true,
   });
 }
