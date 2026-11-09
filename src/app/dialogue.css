@@ -42,3 +42,11 @@
 .flow-compose button:disabled{opacity:.4}
 @media(max-width:1080px){.flow-layout{grid-template-columns:1fr}.flow-assistant{position:static}}
 @media(max-width:700px){.chat-compose{flex-direction:column;align-items:stretch}.chat-bubble{max-width:95%}}
+.ai-header{display:flex;align-items:center;gap:12px}
+.ai-code{display:flex;align-items:center;gap:8px;color:#66758b;font-size:11px;font-weight:700}
+.ai-code input{width:146px;padding:7px 10px;border-radius:8px;font-size:11px}
+.review-run{background:#eaf0ff;border:1px solid #d5e1fa;border-radius:13px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.review-run strong{font-size:14px;color:#304f97}
+.review-run p{font-size:12px;color:#667ca9;margin:5px 0 0;line-height:1.5}
+.review-run .primary{white-space:nowrap}
+@media(max-width:700px){.ai-header{gap:5px}.ai-code{font-size:0}.ai-code input{width:106px}.demo{font-size:10px;padding:6px 8px}.review-run{flex-direction:column;align-items:stretch}}
