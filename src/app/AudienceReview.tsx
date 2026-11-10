@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { askAI } from './aiClient';
 
@@ -13,6 +13,7 @@ export function AudienceReview({ project, aiEnabled, accessCode, onNavigate }: {
   const [result, setResult] = useState<Review | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  useEffect(() => { setResult(null); setError(''); }, [aiEnabled, accessCode]);
   const presented = project.parts.map(x => x.claim).filter(Boolean).join(' → ');
   const review = async () => {
     setBusy(true);

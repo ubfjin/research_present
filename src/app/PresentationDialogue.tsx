@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, MessageCircle, Send } from 'lucide-react';
 import { askAI } from './aiClient';
 
-export type DialogueMessage = { role: 'audience' | 'researcher'; text: string };
+export type DialogueMessage = { role: 'audience' | 'researcher'; text: string; source?: 'ai' | 'demo' };
 type Project = { research: string; audience: string; knowledge: string; relevance: string; message: string; dialogue?: DialogueMessage[] };
 
 function question(project: Project, replies: string[]) {
@@ -58,14 +58,14 @@ export function PresentationDialogue({ project, onChange, onContinue, aiEnabled,
   }, [aiEnabled, accessCode, messages.length, retry]);
   const send = () => {
     if (!input.trim() || !current || busy) return;
-    onChange([...messages, { role: 'audience', text: current }, { role: 'researcher', text: input.trim() }]);
+    onChange([...messages, { role: 'audience', text: current, source: aiEnabled ? 'ai' : 'demo' }, { role: 'researcher', text: input.trim() }]);
     setInput('');
   };
   return <div className="stack">
     <div className="intro"><MessageCircle size={21}/><div><strong>청중의 눈으로 하나씩 질문합니다</strong><p>대답을 이어가며 발표에 필요한 설명을 찾아보세요. 충분하다고 생각하면 언제든 다음 단계로 넘어갈 수 있습니다.</p></div></div>
     <div className="note">{aiEnabled ? 'AI가 연구 내용과 대화 기록을 바탕으로 다음 질문을 만듭니다. 연구 자료에 없는 주장은 직접 확인해 주세요.' : '데모 모드: 질문은 답변 수와 길이에 따른 규칙 기반 예시입니다. 실제 AI가 답변의 의미를 이해해 묻는 것은 아닙니다.'}</div>
     <div className="dialogue-thread">
-      {messages.map((m, i) => <div key={i} className={`chat-bubble ${m.role}`}><small>{m.role === 'audience' ? (aiEnabled ? 'AI 가상 청중' : '가상 청중 · 데모') : '나의 답변'}</small><p>{m.text}</p></div>)}
+      {messages.map((m, i) => <div key={i} className={`chat-bubble ${m.role}`}><small>{m.role === 'audience' ? (m.source === 'ai' ? 'AI 가상 청중' : '가상 청중 · 데모') : '나의 답변'}</small><p>{m.text}</p></div>)}
       <div className="chat-bubble audience current"><small>가상 청중 · 다음 질문</small><p>{busy ? '다음 질문을 생각하고 있습니다…' : error || current}</p></div>
     </div>
     {error && <button className="secondary" onClick={() => setRetry(x => x + 1)}>질문 다시 요청</button>}

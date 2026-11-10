@@ -50,3 +50,13 @@
 .review-run p{font-size:12px;color:#667ca9;margin:5px 0 0;line-height:1.5}
 .review-run .primary{white-space:nowrap}
 @media(max-width:700px){.ai-header{gap:5px}.ai-code{font-size:0}.ai-code input{width:106px}.demo{font-size:10px;padding:6px 8px}.review-run{flex-direction:column;align-items:stretch}}
+.header{min-height:74px;height:auto;gap:16px;padding-top:10px;padding-bottom:10px}
+.ai-connection{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.ai-state{display:inline-flex;align-items:center;min-height:28px;padding:5px 9px;border-radius:18px;background:#edf1f8;color:#526482;font-size:11px;font-weight:800;white-space:nowrap}
+.ai-state.server-configured,.ai-state.auth-authenticated{background:#e7f5ec;color:#24744b}
+.ai-state.server-unconfigured,.ai-state.server-unreachable,.ai-state.auth-invalid,.ai-state.auth-failed{background:#fff1e9;color:#a3582d}
+.ai-state.auth-unchecked{background:#edf2ff;color:#4968ad}
+.ai-mini-button{border:1px solid #cfdbef;border-radius:8px;background:#fff;color:#3c5d9e;font-size:11px;font-weight:800;padding:6px 9px;min-height:28px}
+.ai-mini-button:hover{background:#f0f5ff}
+.ai-demo-label{font-size:11px;color:#76859a}
+@media(max-width:700px){.header{align-items:flex-start}.ai-connection{max-width:65%;justify-content:flex-end}.ai-code{font-size:11px}.ai-code input{width:104px}}
